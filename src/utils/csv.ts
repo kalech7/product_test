@@ -1,4 +1,4 @@
-// src/utils/csv.ts
+// pipes para no confundir con comas de la descripcion
 type ExportCsvOptions = {
     delimiter?: string;         // por defecto ",", usa "|" para pipes
     filename?: string;          // sin extensión o con .csv

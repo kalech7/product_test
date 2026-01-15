@@ -17,7 +17,7 @@ export const rootRoute = createRootRoute({
     component: RootLayout,
 });
 
-// 2) redirect to "/products"
+// 2) redirect to "/products dejamos el / para tener una landing page de bienvenida o darse a conocer"
 export const indexRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: "/",

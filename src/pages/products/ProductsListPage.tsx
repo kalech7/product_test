@@ -252,6 +252,8 @@ export default function ProductsListPage() {
                                         </div>
 
                                         {/* Footer de la tarjeta */}
+                                        {/* Se puede agregar un icono vista para visualizar todos los datos pero el ~75%
+                                        de los campos estan representados en la card suficiente para entender el producto*/}
                                         <div className="p-4 pt-0 flex items-center justify-end gap-2">
                                             {/* Editar */}
                                             <Link
