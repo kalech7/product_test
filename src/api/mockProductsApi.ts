@@ -17,6 +17,7 @@ export type ProductListParams = {
     isActive?: "all" | "true" | "false";
 };
 
+//una muestra considerable para moverse
 let mockProducts: Product[] = [
     {
         id: "1",

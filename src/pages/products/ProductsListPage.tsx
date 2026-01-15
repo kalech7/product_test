@@ -13,7 +13,7 @@ export default function ProductsListPage() {
     const [currentPage, setCurrentPage] = useState(1);
 
     const del = useDeleteProduct();
-
+    //12 elementos para no cargar visualmente y que sea rapido buscar a primera mano
     const itemsPerPage = 12; // 4 columnas x 3 filas
     const items = data?.data ?? [];
 
