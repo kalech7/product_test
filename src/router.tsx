@@ -17,7 +17,7 @@ export const rootRoute = createRootRoute({
     component: RootLayout,
 });
 
-// 2) Index route: "/" -> redirect to "/products"
+// 2) redirect to "/products"
 export const indexRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: "/",

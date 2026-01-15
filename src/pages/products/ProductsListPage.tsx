@@ -3,8 +3,8 @@ import { useProducts, useDeleteProduct } from "../../queries/products.queries";
 import { useProductUIStore } from "../../store/productUI.store";
 import { useState } from "react";
 import type { ProductFilters } from "../../types/product.types";
-import { EditIcon, TrashIcon } from "../../components/icons";
-
+import { EditIcon, TrashIcon,DownloadIcon } from "../../components/icons";
+import { exportCSV } from "../../utils/csv";
 
 export default function ProductsListPage() {
     const { filters, setFilters, resetFilters } = useProductUIStore();
@@ -47,19 +47,61 @@ export default function ProductsListPage() {
         <div className="min-h-screen bg-slate-50 p-6">
             <div className="max-w-7xl mx-auto space-y-6">
                 {/* Header */}
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h1 className="text-3xl font-bold text-slate-900">Productos</h1>
-                        <p className="text-slate-600 mt-1">Gestiona tu inventario de productos</p>
+                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="min-w-0">
+                        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 truncate">
+                            Productos
+                        </h1>
+                        <p className="text-slate-600 mt-1 text-sm md:text-base">
+                            Gestiona tu inventario de productos
+                        </p>
                     </div>
 
-                    <Link
-                        to="/products/new"
-                        className="px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium transition-colors shadow-sm"
-                    >
-                        + Nuevo producto
-                    </Link>
+                    {/* Acciones */}
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-3">
+                        <button
+                            type="button"
+                            onClick={() =>
+                                exportCSV(items, {
+                                    delimiter: "|",
+                                    filename: "productos_exportados",
+                                    includeExcelSepHint: true,
+                                })
+                            }
+                            className="
+                                inline-flex items-center justify-center gap-2
+                                w-full sm:w-auto
+                                px-4 py-2.5
+                                rounded-lg
+                                border border-emerald-300
+                                text-sm font-medium
+                                text-emerald-700
+                                hover:bg-emerald-50
+                                transition-colors
+                              "
+                        >
+                            <DownloadIcon className="w-4 h-4" />
+                            Descargar CSV
+                        </button>
+
+                        <Link
+                            to="/products/new"
+                            className="
+                                inline-flex items-center justify-center
+                                w-full sm:w-auto
+                                px-4 py-2.5
+                                rounded-lg
+                                bg-indigo-600 hover:bg-indigo-700
+                                text-white text-sm font-medium
+                                transition-colors
+                                shadow-sm
+                              "
+                        >
+                            + Nuevo producto
+                        </Link>
+                    </div>
                 </div>
+
 
                 {/* Filters Section */}
                 <section className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 space-y-4">
